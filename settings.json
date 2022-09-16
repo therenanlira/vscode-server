@@ -1,0 +1,7 @@
+{
+    "window.autoDetectColorScheme": true,
+    "git.postCommitCommand": "sync",
+    "git.enableSmartCommit": true,
+    "git.confirmSync": false,
+    "git.autofetch": true
+  }
