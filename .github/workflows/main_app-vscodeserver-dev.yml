@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v1
       with:
         registry: https://index.docker.io/v1/
-        username: ${{ secrets.AzureAppService_ContainerUsername_5690a38b110f4a1fa6f5de87488abbcc }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_846a2e495adc45fba335a0e4137da663 }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_640b0c897b1d4cfab46863747e3c24ed }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_9964fd09462b49278ee6e4cb7a18bec3 }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_5690a38b110f4a1fa6f5de87488abbcc }}/therenanlira/ms-vscode-server:${{ github.sha }}
+        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_640b0c897b1d4cfab46863747e3c24ed }}/therenanlira/ms-vscode-server:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'app-vscodeserver-dev'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_d33f8d3e5649480ab5b35f29429a9b7a }}
-        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_5690a38b110f4a1fa6f5de87488abbcc }}/therenanlira/ms-vscode-server:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_e9cde083e4eb424cb941fbad0a02d285 }}
+        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_640b0c897b1d4cfab46863747e3c24ed }}/therenanlira/ms-vscode-server:${{ github.sha }}'
