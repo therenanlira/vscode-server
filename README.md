@@ -15,4 +15,4 @@ Then check the logs to get the token and URI:
 
 ## Container
 
-As the application is on a container you can run it in any Cloud Platform, as Azure Container Instances as well.
+As the application is containered you can run it in any Cloud Platform, as Azure Container Instances as well.
