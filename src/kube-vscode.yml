@@ -1,0 +1,30 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  labels:
+    kubernetes.io/metadata.name: vscode-dev
+  name: vscode-dev
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vscode-server
+  namespace: vscode-dev
+spec:
+  selector:
+    matchLabels:
+      app: vscode-server
+  template:
+    metadata:
+      labels:
+        app: vscode-server
+    spec:
+      containers:
+      - name: vscode-server
+        image: therenanlira/ms-vscode-server:latest
+        resources:
+          limits:
+            memory: 2Gi
+            cpu: 500m
+---
