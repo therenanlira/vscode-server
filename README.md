@@ -1,4 +1,4 @@
-# VS Code Server in container
+# VSCode Server in container
 
 This is destined to those who has been accepted to the insider code-server.
 For more [click here](https://code.visualstudio.com/docs/remote/vscode-server).
@@ -13,7 +13,6 @@ OBS: You can build your own image using the [Dockerfile](https://github.com/ther
 Access the container logs and follow the steps:
 
     docker logs vscode-server
-
 
 ## Running on Kubernetes
 
