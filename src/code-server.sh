@@ -1,4 +1,4 @@
 #!/bin/bash
 
-cd /home/coder/project
+# Start VSCode Server and accept the license terms
 code-server serve --accept-server-license-terms --random-name

@@ -3,16 +3,24 @@
 This is destined to those who has been accepted to the insider code-server.
 For more [click here](https://code.visualstudio.com/docs/remote/vscode-server).
 
-## Running
+## Running on Docker
 
-You'll need to have docker installed and run:
+Run the container:
 
-    bash ./start.sh
+    docker run -d --name vscode-server therenanlira/vscode-server:latest
 
-Then check the logs to get the token and URI:
+OBS: You can build your own image using the [Dockerfile](https://github.com/therenanlira/ms-vscode-server/blob/main/Dockerfile)
+Access the container logs and follow the steps:
 
-    docker logs ms-vscode-server
+    docker logs vscode-server
 
-## Container
 
-As the application is containered you can run it in any Cloud Platform, as Azure Container Instances as well.
+## Running on Kubernetes
+
+Apply the manifest to create the Namespace and Deployment:
+
+    kubectl apply -f ./src/kube-vscode.yml
+
+Access the POD logs and follow the steps:
+
+    kubectl logs $(kubectl get po --output=name) -f
