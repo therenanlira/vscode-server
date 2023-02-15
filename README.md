@@ -26,4 +26,3 @@ Apply the manifest to create the Namespace and Deployment:
 Access the POD logs and follow the steps:
 
     kubectl logs $(kubectl get po --output=name) -f
-
