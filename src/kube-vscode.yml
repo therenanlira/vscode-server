@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
       - name: vscode-server
-        image: therenanlira/ms-vscode-server:latest
+        image: therenanlira/vscode-server:latest
         resources:
           limits:
             memory: 2Gi

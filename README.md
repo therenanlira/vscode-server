@@ -5,7 +5,7 @@ For more [click here](https://code.visualstudio.com/docs/remote/vscode-server).
 
 ## Running on Docker
 
-You can build your own image using the [Dockerfile](https://github.com/therenanlira/ms-vscode-server/blob/main/Dockerfile) or:
+You can build your own image using the [Dockerfile](https://github.com/therenanlira/vscode-server/blob/main/Dockerfile) or:
 
 Run the container:
 
