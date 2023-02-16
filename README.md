@@ -1,41 +1,28 @@
+# VSCode Server in container
 
-# Servidor VS Code
+Este projeto é destinado aos que foram aceitos no insider code-server.
+Para mais informações, [clique aqui](https://code.visualstudio.com/docs/remote/vscode-server).
 
-Este repositório contém um Dockerfile e scripts para executar o [Visual Studio Code Server](https://github.com/microsoft/vscode-remote-release) dentro de um contêiner Docker.
+## Executando no Docker
 
-## Requisitos
+Você pode construir sua própria imagem usando o [Dockerfile](https://github.com/therenanlira/vscode-server/blob/main/Dockerfile) ou:
 
-Para executar o servidor VS Code, é necessário ter o Docker instalado na máquina.
+Execute o container:
 
-## Executando o servidor
+    docker run -d --name vscode-server therenanlira/vscode-server:latest
 
-1.  Clone este repositório na sua máquina:
-    
-  ```bash
-    git  clone  https://github.com/therenanlira/vscode-server.git  cd  vscode-server
-  ```
-    
-2.  Construa a imagem do Docker:
-    
-  ```bash
-  docker build -t vscode-server .
-  ```
-  
-3.  Execute o contêiner:
-    
-  ```bash
-    docker run -d -p 127.0.0.1:8080:8080 --name vscode-server vscode-server
-  ```
-    
-O servidor VS Code estará disponível em `http://localhost:8080`.
-    
-**Observação**: O uso do endereço `127.0.0.1` limita a conexão apenas à máquina local, o que pode ser útil em ambientes com múltiplos usuários.
-    
+Acesse os logs do container e siga as etapas:
 
-## Personalização
+    docker logs vscode-server
 
-Você pode personalizar o servidor VS Code incluindo extensões e configurações específicas no arquivo `Dockerfile`. Para mais informações sobre como personalizar o servidor, consulte a [documentação oficial](https://code.visualstudio.com/docs/remote/containers).
+## Executando no Kubernetes
 
-## Licença
+Você pode usar o [plano gratuito do AKS (Azure Kubernetes Service)](https://learn.microsoft.com/en-us/azure/aks/free-standard-pricing-tiers).
 
-Este projeto está licenciado sob a licença MIT - consulte o arquivo [LICENSE](https://chat.openai.com/chat/LICENSE) para obter detalhes.
+Aplique o manifesto para criar o Namespace e Deployment:
+
+    kubectl apply -f ./src/kube-vscode.yml
+
+Acesse os logs do POD e siga as etapas:
+
+    kubectl logs $(kubectl get po --output=name) -f
