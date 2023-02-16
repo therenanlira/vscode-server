@@ -1,28 +1,41 @@
-# VSCode Server in container
 
-This is destined to those who has been accepted to the insider code-server.
-For more [click here](https://code.visualstudio.com/docs/remote/vscode-server).
+# Servidor VS Code
 
-## Running on Docker
+Este repositório contém um Dockerfile e scripts para executar o [Visual Studio Code Server](https://github.com/microsoft/vscode-remote-release) dentro de um contêiner Docker.
 
-You can build your own image using the [Dockerfile](https://github.com/therenanlira/vscode-server/blob/main/Dockerfile) or:
+## Requisitos
 
-Run the container:
+Para executar o servidor VS Code, é necessário ter o Docker instalado na máquina.
 
-    docker run -d --name vscode-server therenanlira/vscode-server:latest
+## Executando o servidor
 
-Access the container logs and follow the steps:
+1.  Clone este repositório na sua máquina:
+    
+  ```bash
+    git  clone  https://github.com/therenanlira/vscode-server.git  cd  vscode-server
+  ```
+    
+2.  Construa a imagem do Docker:
+    
+  ```bash
+  docker build -t vscode-server .
+  ```
+  
+3.  Execute o contêiner:
+    
+  ```bash
+    docker run -d -p 127.0.0.1:8080:8080 --name vscode-server vscode-server
+  ```
+    
+O servidor VS Code estará disponível em `http://localhost:8080`.
+    
+**Observação**: O uso do endereço `127.0.0.1` limita a conexão apenas à máquina local, o que pode ser útil em ambientes com múltiplos usuários.
+    
 
-    docker logs vscode-server
+## Personalização
 
-## Running on Kubernetes
+Você pode personalizar o servidor VS Code incluindo extensões e configurações específicas no arquivo `Dockerfile`. Para mais informações sobre como personalizar o servidor, consulte a [documentação oficial](https://code.visualstudio.com/docs/remote/containers).
 
-You can use the [free tier of AKS (Azure Kubernetes Service)](https://learn.microsoft.com/en-us/azure/aks/free-standard-pricing-tiers).
+## Licença
 
-Apply the manifest to create the Namespace and Deployment:
-
-    kubectl apply -f ./src/kube-vscode.yml
-
-Access the POD logs and follow the steps:
-
-    kubectl logs $(kubectl get po --output=name) -f
+Este projeto está licenciado sob a licença MIT - consulte o arquivo [LICENSE](https://chat.openai.com/chat/LICENSE) para obter detalhes.
